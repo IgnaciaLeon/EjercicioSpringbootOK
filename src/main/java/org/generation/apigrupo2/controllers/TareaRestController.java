@@ -29,7 +29,25 @@ public class TareaRestController {
         return tareaAGuardar;
     }
 
-
-
+    @DeleteMapping("/borrar/{id}")
+    public String borrarTareaPorId(@PathVariable Long id){
+        tareaService.borrarTarea(id);
+        return "la tarea ha sido borrado";
     }
+
+    @PutMapping("/editar/{id}")
+    public Tarea editarTareaPorId(@PathVariable Long id, @RequestBody Tarea tareaActualizado){
+        Tarea tareaEditado = tareaService.editarTareaPorId(id, tareaActualizado);
+        return tareaEditado;
+    }
+
+    @GetMapping("/buscar/{id}")
+    public Tarea tareaPorId(@PathVariable Long id){
+        Tarea tareaMostrar = tareaService.buscarTareaPorId(id);
+        return tareaMostrar;
+    }
+
+
+
+}
 

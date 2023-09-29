@@ -28,6 +28,24 @@ public class ComentarioRestController {
         return comentarioAGuardar;
     }
 
+    @DeleteMapping("/borrar/{id}")
+    public String borrarComentarioPorId(@PathVariable Long id){
+        comentarioService.borrarComentario(id);
+        return "El comentario ha sido borrado";
+    }
+
+    @PutMapping("/editar/{id}")
+    public Comentario editarComentarioPorId(@PathVariable Long id, @RequestBody Comentario comentarioActualizado){
+        Comentario comentarioEditado = comentarioService.editarComentarioPorId(id, comentarioActualizado);
+        return comentarioEditado;
+    }
+
+    @GetMapping("/buscar/{id}")
+    public Comentario comentarioPorId(@PathVariable Long id){
+        Comentario comentarioMostrar = comentarioService.buscarComentarioPorId(id);
+        return comentarioMostrar;
+    }
+
 
 
 }
